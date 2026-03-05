@@ -34,22 +34,20 @@ addBtn.addEventListener("click", function() {
     deleteBtn.textContent = "Eliminar";
     deleteBtn.classList.add("delete");
 
+    // evento individual para eliminar
+    deleteBtn.addEventListener("click", function() {
+        li.remove();
+    });
+
+    // evento para marcar tarea completada
+    li.addEventListener("click", function() {
+        li.classList.toggle("completed");
+    });
+
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
 
     input.value = "";
-});
-
-taskList.addEventListener("click", function(event) {
-
-    if (event.target.classList.contains("delete")) {
-        event.target.parentElement.remove();
-    }
-
-    if (event.target.tagName === "LI") {
-        event.target.classList.toggle("completed");
-    }
-
 });
 
 </script>
