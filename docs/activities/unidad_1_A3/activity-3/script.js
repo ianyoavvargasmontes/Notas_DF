@@ -1,0 +1,5 @@
+<style>
+body { font-family: Arial; }
+.completed { text-decoration: line-through; color: gray; }
+button { margin-left: 10px; }
+</style>
