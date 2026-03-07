@@ -1,5 +1,102 @@
-<style>
-body { font-family: Arial; }
-.completed { text-decoration: line-through; color: gray; }
-button { margin-left: 10px; }
-</style>
+const input = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
+
+/* =========================
+   RETO 2: usar innerHTML
+========================= */
+
+addBtn.addEventListener("click", function() {
+    if (input.value.trim() === "") return;
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        ${input.value}
+        <button class="delete">Eliminar</button>
+    `;
+
+    const deleteBtn = li.querySelector(".delete");
+
+    /* =========================
+       RETO 1: evento individual
+    ========================= */
+
+    deleteBtn.addEventListener("click", function() {
+        li.remove();
+    });
+
+    li.addEventListener("click", function() {
+        li.classList.toggle("completed");
+    });
+
+    taskList.appendChild(li);
+
+    input.value = "";
+});
+
+
+/* =========================
+   RETO 3: crear 1000 tareas
+========================= */
+
+console.time("crear1000");
+
+for(let i = 1; i <= 1000; i++){
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        Tarea ${i}
+        <button class="delete">Eliminar</button>
+    `;
+
+    const deleteBtn = li.querySelector(".delete");
+
+    deleteBtn.addEventListener("click", function() {
+        li.remove();
+    });
+
+    li.addEventListener("click", function() {
+        li.classList.toggle("completed");
+    });
+
+    taskList.appendChild(li);
+}
+
+console.timeEnd("crear1000");
+
+
+/* =========================
+   Optimización DocumentFragment
+========================= */
+
+console.time("optimizado");
+
+const fragment = document.createDocumentFragment();
+
+for(let i = 1001; i <= 2000; i++){
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        Tarea ${i}
+        <button class="delete">Eliminar</button>
+    `;
+
+    const deleteBtn = li.querySelector(".delete");
+
+    deleteBtn.addEventListener("click", function() {
+        li.remove();
+    });
+
+    li.addEventListener("click", function() {
+        li.classList.toggle("completed");
+    });
+
+    fragment.appendChild(li);
+}
+
+taskList.appendChild(fragment);
+
+console.timeEnd("optimizado");
