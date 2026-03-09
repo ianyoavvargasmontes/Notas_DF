@@ -7,6 +7,14 @@ body {
     color: gray;
 }
 
-button {
+/* mejorar las tareas */
+#taskList li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* botón eliminar */
+.delete{
     margin-left: 10px;
 }

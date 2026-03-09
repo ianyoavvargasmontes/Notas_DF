@@ -10,10 +10,11 @@ addBtn.addEventListener("click", function() {
     if (input.value.trim() === "") return;
 
     const li = document.createElement("li");
+    li.className = "list-group-item";
 
     li.innerHTML = `
         ${input.value}
-        <button class="delete">Eliminar</button>
+        <button class="delete btn btn-danger btn-sm">Eliminar</button>
     `;
 
     const deleteBtn = li.querySelector(".delete");
@@ -45,10 +46,11 @@ console.time("crear1000");
 for(let i = 1; i <= 1000; i++){
 
     const li = document.createElement("li");
+    li.className = "list-group-item";
 
     li.innerHTML = `
         Tarea ${i}
-        <button class="delete">Eliminar</button>
+        <button class="delete btn btn-danger btn-sm">Eliminar</button>
     `;
 
     const deleteBtn = li.querySelector(".delete");
@@ -78,10 +80,11 @@ const fragment = document.createDocumentFragment();
 for(let i = 1001; i <= 2000; i++){
 
     const li = document.createElement("li");
+    li.className = "list-group-item";
 
     li.innerHTML = `
         Tarea ${i}
-        <button class="delete">Eliminar</button>
+        <button class="delete btn btn-danger btn-sm">Eliminar</button>
     `;
 
     const deleteBtn = li.querySelector(".delete");
