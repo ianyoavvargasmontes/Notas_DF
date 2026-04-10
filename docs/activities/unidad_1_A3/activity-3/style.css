@@ -1,0 +1,20 @@
+body {
+    font-family: Arial;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* mejorar las tareas */
+#taskList li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* botón eliminar */
+.delete{
+    margin-left: 10px;
+}

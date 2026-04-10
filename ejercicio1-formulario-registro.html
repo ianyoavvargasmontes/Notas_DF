@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejercicio 1 — Formulario de Registro</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4ff;
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+      min-height: 100vh;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 36px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    h1 { font-size: 22px; color: #1e1b4b; margin-bottom: 6px; }
+    .instruccion {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #78350f;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .instruccion strong { display: block; margin-bottom: 4px; }
+    fieldset {
+      border: 1px solid #e0e7ff;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    legend {
+      font-size: 13px;
+      font-weight: 600;
+      color: #4338ca;
+      padding: 0 8px;
+    }
+    .campo { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 5px;
+    }
+    label .requerido { color: #ef4444; margin-left: 2px; }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 7px;
+      font-size: 14px;
+      color: #111;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+    }
+    input:valid { border-color: #22c55e; }
+    input:invalid:not(:placeholder-shown) { border-color: #ef4444; }
+    .hint {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 13px;
+      background: #4f46e5;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    button[type="submit"]:hover { background: #4338ca; }
+
+    /* ── Tooltip de ayuda para el patrón de contraseña ── */
+    .password-rules {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .password-rules span::before { content: '○  '; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <span class="badge">Ejercicio 1 de 3</span>
+  <h1>Formulario de Registro</h1>
+
+  <div class="instruccion">
+    <strong>📝 Tu tarea:</strong>
+    Completa los atributos faltantes marcados con <code>???</code> en los campos del formulario.
+    Usa atributos HTML5 semánticos de validación: <code>type</code>, <code>required</code>,
+    <code>minlength</code>, <code>maxlength</code>, <code>min</code>, <code>max</code>, <code>pattern</code>.
+  </div>
+
+  <form id="forma-registro">
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECCIÓN 1: Datos personales                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <fieldset>
+      <legend>👤 Datos personales</legend>
+
+      <div class="campo">
+        <label for="nombre">Nombre completo <span class="requerido">*</span></label>
+        <!--
+          ✅ SOLUCIÓN:
+          - required          → campo obligatorio
+          - minlength="3"     → mínimo 3 caracteres
+          - maxlength="60"    → máximo 60 caracteres
+        -->
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Ej. Ana García López"
+          required
+          minlength="3"
+          maxlength="60"
+        />
+        <p class="hint">Mínimo 3 caracteres, máximo 60.</p>
+      </div>
+
+      <div class="campo">
+        <label for="edad">Edad <span class="requerido">*</span></label>
+        <!--
+          ✅ SOLUCIÓN:
+          - type="number"  → activa el spinner numérico del navegador
+          - required       → campo obligatorio
+          - min="16"       → no permite menores de 16
+          - max="99"       → límite superior
+        -->
+        <input
+          type="number"
+          id="edad"
+          name="edad"
+          placeholder="Ej. 21"
+          required
+          min="16"
+          max="99"
+        />
+        <p class="hint">Solo mayores de 16 años. Máximo 99.</p>
+      </div>
+
+      <div class="campo">
+        <label for="pais">País <span class="requerido">*</span></label>
+        <!--
+          ✅ SOLUCIÓN:
+          - required  → el <select> también acepta required; la opción con value=""
+                        actúa como placeholder vacío, lo que hace fallar la validación
+                        si el usuario no elige nada.
+        -->
+        <select id="pais" name="pais" required>
+          <option value="">-- Selecciona --</option>
+          <option value="mx">México</option>
+          <option value="co">Colombia</option>
+          <option value="ar">Argentina</option>
+          <option value="es">España</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECCIÓN 2: Cuenta                         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <fieldset>
+      <legend>🔐 Cuenta</legend>
+
+      <div class="campo">
+        <label for="email">Correo electrónico <span class="requerido">*</span></label>
+        <!--
+          ✅ SOLUCIÓN:
+          - type="email"  → el navegador valida automáticamente el formato
+                            usuario@dominio.ext sin necesidad de pattern
+        -->
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="usuario@ejemplo.com"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="password">Contraseña <span class="requerido">*</span></label>
+        <!--
+          ✅ SOLUCIÓN — patrón explicado:
+          pattern="(?=.*[A-Z])(?=.*\d).{8,}"
+
+          (?=.*[A-Z])  → lookahead: exige al menos UNA letra mayúscula en cualquier posición
+          (?=.*\d)     → lookahead: exige al menos UN dígito (0-9) en cualquier posición
+          .{8,}        → la cadena completa debe tener 8 o más caracteres
+
+          Los lookaheads no consumen caracteres; sólo comprueban la condición.
+          La parte .{8,} es la que impone la longitud mínima real.
+        -->
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="••••••••"
+          pattern="(?=.*[A-Z])(?=.*\d).{8,}"
+          required
+        />
+        <div class="password-rules">
+          <span>Mínimo 8 caracteres</span>
+          <span>Al menos una letra mayúscula (A–Z)</span>
+          <span>Al menos un número (0–9)</span>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="url-perfil">URL de perfil (opcional)</label>
+        <!--
+          ✅ SOLUCIÓN:
+          - type="url"  → el navegador valida que el valor empiece con http:// o https://
+                          y tenga estructura de URL válida. No requiere pattern manual.
+        -->
+        <input
+          type="url"
+          id="url-perfil"
+          name="url_perfil"
+          placeholder="https://mi-sitio.com"
+        />
+      </div>
+    </fieldset>
+
+    <button type="submit">Crear cuenta →</button>
+  </form>
+</div>
+
+<script>
+  /*
+    BONUS — novalidate vs. validación nativa
+    ─────────────────────────────────────────
+    • Con    novalidate: el navegador NO muestra tooltips de error propios;
+      el control de errores queda en manos de JavaScript (útil para UI custom).
+    • Sin novalidate: al hacer submit, el navegador resalta el primer campo
+      inválido y muestra su tooltip de error nativo antes de enviar.
+
+    En este ejercicio se eliminó el atributo novalidate del <form> para que
+    puedas ver la validación nativa en acción.
+  */
+  document.getElementById('forma-registro').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('✅ Formulario enviado correctamente (simulado).');
+  });
+</script>
+</body>
+</html>

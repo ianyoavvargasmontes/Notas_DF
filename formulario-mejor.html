@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+</head>
+<body>
+
+<header>
+  <h1>Registro de usuario</h1>
+</header>
+
+<main>
+  <section>
+    <h2>Información académica</h2>
+
+    <form>
+
+      <label for="lenguaje">Lenguaje favorito:</label><br>
+      <input list="lenguajes" id="lenguaje" name="lenguaje" placeholder="Ej. JavaScript">
+
+      <datalist id="lenguajes">
+        <option value="JavaScript">
+        <option value="Python">
+        <option value="Java">
+        <option value="C++">
+        <option value="Go">
+      </datalist>
+
+      <br><br>
+
+      <label for="pais">País:</label><br>
+      <input list="paises" id="pais" name="pais">
+
+      <datalist id="paises">
+        <option value="México">
+        <option value="España">
+        <option value="Argentina">
+        <option value="Colombia">
+        <option value="Reino Unido"></option>
+      </datalist>
+
+      <br><br>
+       <label for="fecha">Fecha favorita:</label><br><br>
+       <input type="date" name="fecha" value="2026-03-20">
+       
+
+       <button type="submit">Enviar</button>
+
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>Formulario educativo</p>
+</footer>
+
+</body>
+</html>

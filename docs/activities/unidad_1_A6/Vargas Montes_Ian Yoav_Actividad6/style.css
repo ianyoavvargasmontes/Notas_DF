@@ -1,0 +1,72 @@
+:root {
+  --color-bg: #f4f1eb;
+  --color-surface: #ffffff;
+  --color-accent: #c0392b;
+  --color-accent-dark: #96281b;
+  --color-text: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-border: #d4cfc5;
+  --radius: 6px;
+  --font-display: "Georgia", serif;
+  --font-body: "Palatino Linotype", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background: var(--color-surface);
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.card__header h1 {
+  font-family: var(--font-display);
+}
+
+.form__group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--color-accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background: var(--color-accent-dark);
+}
