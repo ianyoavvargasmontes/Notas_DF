@@ -3,6 +3,9 @@ const cube = document.getElementById("cube");
 let rotateX = 0;
 let rotateY = 0;
 
+// 🔍 ESCALA
+let scale = 1;
+
 // Para arrastre
 let isDragging = false;
 let lastX = 0;
@@ -20,6 +23,13 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowDown") rotateX += step;
   if (e.key === "ArrowLeft") rotateY -= step;
   if (e.key === "ArrowRight") rotateY += step;
+
+  // 🔍 CONTROL DE ZOOM
+  if (e.key === "+") scale += 0.1;
+  if (e.key === "-") scale -= 0.1;
+
+  // Limitar escala
+  scale = Math.max(0.5, Math.min(3, scale))
 });
 
 // 🖱️ MOUSE
@@ -75,6 +85,8 @@ document.addEventListener("touchmove", (e) => {
   lastX = e.touches[0].clientX;
   lastY = e.touches[0].clientY;
 });
+
+
 
 // 🎬 ANIMACIÓN CON INERCIA
 function animate() {
