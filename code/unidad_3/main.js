@@ -86,8 +86,6 @@ document.addEventListener("touchmove", (e) => {
   lastY = e.touches[0].clientY;
 });
 
-
-
 // 🎬 ANIMACIÓN CON INERCIA
 function animate() {
   rotateX -= velocityX;
@@ -96,7 +94,7 @@ function animate() {
   velocityX *= 0.95;
   velocityY *= 0.95;
 
-  cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
 
   requestAnimationFrame(animate);
 }
